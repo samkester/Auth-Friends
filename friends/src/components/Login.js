@@ -29,7 +29,22 @@ const Login = () => {
     const submitHandler = (event) => {
         event.preventDefault();
         setIsSending(true);
-        axiosWithAuth().post("/api/login", formValues);
+        setFormValues(defaultFormValues);
+        setFormErrors(defaultFormValues);
+
+        axiosWithAuth().post("/api/login", formValues)
+        .then(response => {
+            //console.log(response);
+            localStorage.setItem("token", response.data.payload);
+            //console.log(localStorage.getItem("token"));
+        })
+        .catch(error => {
+            //console.log(error.response);
+            setFormErrors({...formErrors, "username": error.response.data.error});
+        })
+        .finally(() => {
+            setIsSending(false);
+        })
     }
 
     return(
@@ -43,10 +58,10 @@ const Login = () => {
                 </label>
                 <button onClick={submitHandler}>Login</button>
             </form>
-            <div class="errors">
-                {Object.array(formErrors).map(error => <div key={error}>{error}</div>)}
+            <div className="errors">
+                {Object.values(formErrors).map((error, index) => <div key={index}>{error}</div>)}
             </div>
-            {isSending && <div class="sending">Sending...</div>}
+            {isSending && <div className="sending">Sending...</div>}
         </StyledLogin>
     )
 }
