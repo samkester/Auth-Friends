@@ -9,12 +9,14 @@ import SingleFriend from './components/SingleFriend';
 function App() {
   return (
     <StyledApp>
-      <Switch>
-        <ProtectedRoute path="/friend/:id" component={ SingleFriend } />
-        <ProtectedRoute path="/friends" component={FriendPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/" component={Login} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <ProtectedRoute path="/friend/:id" component={ SingleFriend } />
+          <ProtectedRoute path="/friends" component={FriendPage} />
+          <Route path="/login" component={Login} />
+          <Route path="/" component={Login} />
+        </Switch>
+      </div>
     </StyledApp>
   );
 }

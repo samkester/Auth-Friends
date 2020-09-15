@@ -11,6 +11,8 @@ const FriendPage = () => {
     const [friends, setFriends] = useState([]);
     const [newFriend, setNewFriend] = useState(defaultNewFriend);
 
+    let history = useHistory();
+
     useEffect(() => {
         axiosWithAuth().get("/api/friends")
         .then(response => {
@@ -21,8 +23,6 @@ const FriendPage = () => {
             console.log(error);
         })
     }, [])
-
-    let history = useHistory();
 
     const logout = (event) => {
         event.preventDefault();

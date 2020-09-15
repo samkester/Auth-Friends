@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import SingleFriendView from "./SingleFriendView";
 import SingleFriendEdit from "./SingleFriendEdit";
+import StyledSingleFriend from "./styled/StyledSingleFriend";
 
 const SingleFriend = () => {
     const [friend, setFriend] = useState({});
@@ -53,7 +54,7 @@ const SingleFriend = () => {
     }
 
     return(
-        <div>
+        <StyledSingleFriend>
             {isEditing ?
                 <SingleFriendEdit friend={friend} setFriend={setFriend} /> :
                 <SingleFriendView friend={friend} hideView={true} /> }
@@ -62,7 +63,7 @@ const SingleFriend = () => {
                 <button onClick={saveEdit}>Save</button> : 
                 <button onClick={startEdit}>Edit</button> }
             <button onClick={deleteFriend}>Delete</button>
-        </div>
+        </StyledSingleFriend>
     )
 }
 
