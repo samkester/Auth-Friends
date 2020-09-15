@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StyledLogin from "./styled/StyledLogin";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const defaultFormValues = {
     username: "",
@@ -11,6 +12,7 @@ const Login = () => {
     const [formValues, setFormValues] = useState(defaultFormValues);
     const [formErrors, setFormErrors] = useState(defaultFormValues);
     const [isSending, setIsSending] = useState(false);
+    let history = useHistory();
 
     const changeHandler = (event) => {
         const name = event.target.name;
@@ -37,6 +39,7 @@ const Login = () => {
             //console.log(response);
             localStorage.setItem("token", response.data.payload);
             //console.log(localStorage.getItem("token"));
+            history.push("/friends");
         })
         .catch(error => {
             //console.log(error.response);

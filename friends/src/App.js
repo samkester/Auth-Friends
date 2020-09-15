@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import ProtectedRoute from "./utils/ProtectedRoute";
-//import { FriendsContext } from './store/contexts';
 import StyledApp from "./components/styled/StyledApp";
 import Login from './components/Login';
+import FriendPage from './components/FriendPage';
 
 function App() {
-  const [friends, setFriends] = useState([]);
-
   return (
-    <div>
+    <StyledApp>
       <Switch>
-        {/*<FriendsContext.Provider value={{friends, setFriends}}>
-          <ProtectedRoute path="/friend/:id" component={ single friend } />
-          <ProtectedRoute path="/friends" component={ friends list } />
-        </FriendsContext.Provider>*/}
+          {/*{<ProtectedRoute path="/friend/:id" component={ single friend } />}
+          */}
+        <ProtectedRoute path="/friends" component={FriendPage} />
         <Route path="/login" component={Login} />
         <Route path="/" component={Login} />
       </Switch>
-    </div>
+    </StyledApp>
   );
 }
 
