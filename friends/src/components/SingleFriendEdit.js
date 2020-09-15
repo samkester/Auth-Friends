@@ -9,9 +9,18 @@ const SingleFriendView = ({friend, setFriend}) => {
 
     return(
         <StyledSingleFriend>
-            <input type="text" name="name" value={friend.name} onChange={changeHandler} />
-            <input type="text" name="email" value={friend.email} onChange={changeHandler} />
-            <input type="text" name="age" value={friend.age} onChange={changeHandler} />
+            <label>
+                Name: 
+                <input type="text" name="name" value={friend.name} onChange={changeHandler} />
+            </label>
+            <label>
+                Email: 
+                <input type="text" name="email" value={friend.email} onChange={changeHandler} />
+            </label>
+            <label>
+                Age: 
+                <input type="text" name="age" value={friend.age} onChange={changeHandler} />
+            </label>
         </StyledSingleFriend>
     )
 }
